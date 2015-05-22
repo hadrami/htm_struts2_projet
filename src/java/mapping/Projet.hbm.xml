@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 13, 2015 4:10:55 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mapping.Projet" table="PROJET" schema="HTM" optimistic-lock="version">
+        <id name="idProjet" type="big_decimal">
+            <column name="ID_PROJET" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="designation" type="string">
+            <column name="DESIGNATION" length="100" not-null="true" />
+        </property>
+        <property name="dateDebut" type="date">
+            <column name="DATE_DEBUT" length="7" not-null="true" />
+        </property>
+        <property name="budget" type="big_decimal">
+            <column name="BUDGET" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dateFin" type="date">
+            <column name="DATE_FIN" length="7" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

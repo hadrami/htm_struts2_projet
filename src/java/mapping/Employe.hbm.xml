@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 13, 2015 4:10:55 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mapping.Employe" table="EMPLOYE" schema="HTM" optimistic-lock="version">
+        <id name="matricule" type="big_decimal">
+            <column name="MATRICULE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="service" class="mapping.Service" fetch="select">
+            <column name="ID_SERV" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="NOM" length="100" not-null="true" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="PRENOM" length="100" not-null="true" />
+        </property>
+        <property name="dateEmbauche" type="date">
+            <column name="DATE_EMBAUCHE" length="7" not-null="true" />
+        </property>
+        <set name="postes" table="POST_EMP" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MATRICULE" precision="22" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="mapping.Poste">
+                <column name="ID_POSTE" precision="22" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
